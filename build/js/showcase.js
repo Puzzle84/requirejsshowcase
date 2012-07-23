@@ -1,0 +1,1 @@
+define(["./one","./two"],function(e,t){return{color:"blue",size:"large",log:function(){console.log(e.color),console.log(t.size)}}})
