@@ -1,10 +1,9 @@
-define([],function() {
-        //return an object to define the "app/sub" module.
-        return {
-            color: "blue",
-            size: "large",
-            showSub: function() {
-            }
+define(['exports'], function(exports) {
+    function Sub() {
+        this.show = function() {
+            return "BOOM NY SUB IN THE HOUSE!";
         };
     }
-);
+
+    exports.sub = Sub;
+});

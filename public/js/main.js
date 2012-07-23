@@ -24,4 +24,7 @@ function   ($, sub, showcase) {
     // create a new instance of showcase.
     var sc = new showcase.showcase();
     sc.log();
+
+    var nysub = new sub.sub();
+    console.log(nysub.show());
 });

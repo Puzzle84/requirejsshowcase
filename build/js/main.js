@@ -1,14 +1,13 @@
 
-define('app/sub',[],function() {
-        //return an object to define the "app/sub" module.
-        return {
-            color: "blue",
-            size: "large",
-            showSub: function() {
-            }
+define('app/sub',['exports'], function(exports) {
+    function Sub() {
+        this.show = function() {
+            return "BOOM NY SUB IN THE HOUSE!";
         };
     }
-);
+
+    exports.sub = Sub;
+});
 define('two',['one', 'exports'], function(one, exports) {
     function Two() {
         this.doSomething = function(){
@@ -77,5 +76,8 @@ function   ($, sub, showcase) {
     // create a new instance of showcase.
     var sc = new showcase.showcase();
     sc.log();
+
+    var nysub = new sub.sub();
+    console.log(nysub.show());
 });
 define("main", function(){});
