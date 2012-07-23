@@ -15,11 +15,13 @@ requirejs.config({
 // Start the main app logic.
 requirejs(['jquery', 'app/sub', 'showcase'],
 function   ($, sub, showcase) {
-    //jQuery and the app/sub module are all
-    //loaded and can be used here now.
+
+    // JQuery, app/sub.js and showcase.js are now loaded and ready for use.
      $(function() {
         $('body').css({"background-color": "red"});
     });
-     var sc = new showcase.showcase();
+
+    // create a new instance of showcase.
+    var sc = new showcase.showcase();
     sc.log();
 });

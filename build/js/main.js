@@ -12,7 +12,9 @@ define('app/sub',[],function() {
 define('two',['one', 'exports'], function(one, exports) {
     function Two() {
         this.doSomething = function(){
+            // create a new instance of one.
             var uno = new one.one();
+            // circulare reference from: two.js to one.js and back to two.js
             return uno.doSomethingElse();
         };
 
@@ -26,7 +28,9 @@ define('two',['one', 'exports'], function(one, exports) {
 define('one',['two', 'exports'], function(two, exports) {
     function One() {
         this.doSomethingElse = function() {
+            // new instance of two.js
             var dos = new two.two();
+
             return dos.getTitle();
         };
     }
@@ -36,7 +40,11 @@ define('one',['two', 'exports'], function(two, exports) {
 define('showcase',["one", "two", "exports"], function(one, two, exports) {
     function Showcase(){
         this.log = function() {
+            // create a new instance of two.js
             var dos = new two.two();
+
+            // call dos.doSomething
+            // circular reference: two.js calls one.js and one.js calls two.js
             console.log(dos.doSomething());
         };
     }
@@ -60,12 +68,14 @@ requirejs.config({
 // Start the main app logic.
 requirejs(['jquery', 'app/sub', 'showcase'],
 function   ($, sub, showcase) {
-    //jQuery and the app/sub module are all
-    //loaded and can be used here now.
+
+    // JQuery, app/sub.js and showcase.js are now loaded and ready for use.
      $(function() {
         $('body').css({"background-color": "red"});
     });
-     var sc = new showcase.showcase();
+
+    // create a new instance of showcase.
+    var sc = new showcase.showcase();
     sc.log();
 });
 define("main", function(){});
