@@ -7,8 +7,8 @@ requirejs.config({
     //never includes a ".js" extension since
     //the paths config could be for a directory.
     paths: {
-        libs: '../libs',
-        app: '../app'
+        libs: 'libs',
+        app: 'app'
     }
 });
 
