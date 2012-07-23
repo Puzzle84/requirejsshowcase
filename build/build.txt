@@ -11,7 +11,7 @@ css/reset.css
 js/main.js
 ----------------
 js/app/sub.js
-js/one.js
 js/two.js
+js/one.js
 js/showcase.js
 js/main.js

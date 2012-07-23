@@ -1,8 +1,10 @@
-define(function() {
-        //return an object to define the "js/one" module.
-        return {
-            color: "blue",
-            size: "large"
+define(['two', 'exports'], function(two, exports) {
+    function One() {
+        this.doSomethingElse = function() {
+            var dos = new two.two();
+            return dos.getTitle();
         };
     }
-);
+
+    exports.one = One;
+});

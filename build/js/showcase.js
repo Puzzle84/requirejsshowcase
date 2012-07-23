@@ -1,1 +1,10 @@
-define(["./one","./two"],function(e,t){return{color:"blue",size:"large",log:function(){console.log(e.color),console.log(t.size)}}})
+define(["one", "two", "exports"], function(one, two, exports) {
+    function Showcase(){
+        this.log = function() {
+            var dos = new two.two();
+            console.log(dos.doSomething());
+        };
+    }
+
+    exports.showcase = Showcase;
+});

@@ -1,14 +1,10 @@
-//js/showcase.js now has some dependencies, a cart and inventory
-//module in the same directory as showcase.js
-define(["./one", "./two"], function(one, two) {
-        //return an object to define the "js/showcase" module.
-        return {
-            color: "blue",
-            size: "large",
-            log: function() {
-                console.log(one.color);
-                console.log(two.size);
-            }
+define(["one", "two", "exports"], function(one, two, exports) {
+    function Showcase(){
+        this.log = function() {
+            var dos = new two.two();
+            console.log(dos.doSomething());
         };
     }
-);
+
+    exports.showcase = Showcase;
+});

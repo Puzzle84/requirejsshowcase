@@ -1,1 +1,71 @@
-define("app/sub",[],function(){return{color:"blue",size:"large",showSub:function(){}}}),define("one",[],function(){return{color:"blue",size:"large"}}),define("two",[],function(){return{color:"red",size:"small"}}),define("showcase",["./one","./two"],function(e,t){return{color:"blue",size:"large",log:function(){console.log(e.color),console.log(t.size)}}}),requirejs.config({baseUrl:"js",paths:{libs:"../libs",app:"../app"}}),requirejs(["jquery","app/sub","showcase"],function(e,t,n){e(function(){e("body").css({"background-color":"red"})}),n.log()}),define("main",function(){})
+
+define('app/sub',[],function() {
+        //return an object to define the "app/sub" module.
+        return {
+            color: "blue",
+            size: "large",
+            showSub: function() {
+            }
+        };
+    }
+);
+define('two',['one', 'exports'], function(one, exports) {
+    function Two() {
+        this.doSomething = function(){
+            var uno = new one.one();
+            return uno.doSomethingElse();
+        };
+
+        this.getTitle = function() {
+            return 'RequireJS Roxxors';
+        };
+    }
+
+    exports.two = Two;
+});
+define('one',['two', 'exports'], function(two, exports) {
+    function One() {
+        this.doSomethingElse = function() {
+            var dos = new two.two();
+            return dos.getTitle();
+        };
+    }
+
+    exports.one = One;
+});
+define('showcase',["one", "two", "exports"], function(one, two, exports) {
+    function Showcase(){
+        this.log = function() {
+            var dos = new two.two();
+            console.log(dos.doSomething());
+        };
+    }
+
+    exports.showcase = Showcase;
+});
+requirejs.config({
+    //By default load any module IDs from js/libs
+    baseUrl: 'js',
+    //except, if the module ID starts with "app",
+    //load it from the js/app directory. paths
+    //config is relative to the baseUrl, and
+    //never includes a ".js" extension since
+    //the paths config could be for a directory.
+    paths: {
+        libs: '../libs',
+        app: '../app'
+    }
+});
+
+// Start the main app logic.
+requirejs(['jquery', 'app/sub', 'showcase'],
+function   ($, sub, showcase) {
+    //jQuery and the app/sub module are all
+    //loaded and can be used here now.
+     $(function() {
+        $('body').css({"background-color": "red"});
+    });
+     var sc = new showcase.showcase();
+    sc.log();
+});
+define("main", function(){});

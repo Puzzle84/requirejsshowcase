@@ -20,6 +20,6 @@ function   ($, sub, showcase) {
      $(function() {
         $('body').css({"background-color": "red"});
     });
-
-    showcase.log();
+     var sc = new showcase.showcase();
+    sc.log();
 });
