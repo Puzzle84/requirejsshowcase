@@ -1,0 +1,40 @@
+So this is my little plaything with requireJS and some CommonJS module pattern stuff.
+I've intentionally created a situation where i refer 2 files in a circular fashion.
+
+Anyways first things first.
+
+A couple of things you might want to get before you dive into this.
+
+#1 installing node
+
+If you have homebrew installed it's as simple as
+> brew install node
+
+If you don't:
+1. Install Xcode.
+2. Install git.
+3. Run the following commands:
+darwin_setup.sh
+git clone git://github.com/ry/node.git
+cd node
+./configure
+make
+sudo make install
+
+#2 installing requireJS
+I preferred the global install as this would make calling r.js alot easier so go ahead and use
+> sudo npm install -g requirejs
+
+#3 running the buildscript
+First things first a little info here.
+All the options i wanted/added are in js/app.build.js
+
+you can open that up and look at some of the options in there and play with them.
+
+once you're happy with those settings go to the js folder of my project and do
+
+>r.js -o app.build.js
+
+this will look up dependencies and minify the css and js if you've set it up to do so.
+
+now you will hit the build/index.html file and TADA!!!
