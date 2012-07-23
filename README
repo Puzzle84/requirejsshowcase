@@ -27,11 +27,11 @@ I preferred the global install as this would make calling r.js alot easier so go
 
 #3 running the buildscript
 First things first a little info here.
-All the options i wanted/added are in js/app.build.js
+All the options i wanted/added are in app.build.js
 
 you can open that up and look at some of the options in there and play with them.
 
-once you're happy with those settings go to the js folder of my project and do
+once you're happy with those settings go to the root folder of my project and do
 
 >r.js -o app.build.js
 
